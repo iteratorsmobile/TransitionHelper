@@ -44,3 +44,7 @@ transitionhelper/libs/
 transitionhelper/src/androidTest/
 transitionhelper/src/main/res/drawable/
 transitionhelper/src/test/
+library/libs/
+library/src/androidTest/
+library/src/main/res/drawable/
+library/src/test/
