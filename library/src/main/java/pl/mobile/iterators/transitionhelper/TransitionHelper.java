@@ -15,6 +15,7 @@ import android.transition.Fade;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
+import android.view.Window;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,7 +105,10 @@ public class TransitionHelper {
             Transition fade = new Fade();
             fade.excludeTarget(android.R.id.navigationBarBackground, true);
             fade.excludeTarget(android.R.id.statusBarBackground, true);
+            appCompatActivity.getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
             appCompatActivity.getWindow().setEnterTransition(fade);
+            appCompatActivity.getWindow().setReturnTransition(fade);
+            appCompatActivity.getWindow().setSharedElementsUseOverlay(true);
             appCompatActivity.getWindow().setSharedElementEnterTransition(transition);
             appCompatActivity.getWindow().setSharedElementReturnTransition(transition);
         }
