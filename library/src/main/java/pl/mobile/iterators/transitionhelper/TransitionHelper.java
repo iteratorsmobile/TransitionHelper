@@ -71,6 +71,15 @@ public class TransitionHelper {
         from.startActivity(intent, transitionActivityOptions.toBundle());
     }
 
+    @SuppressWarnings("unchecked")
+    public static void transitionToForResult(AppCompatActivity from, Intent intent, int requestCode, @TransitionRes int transition, View... sharedElements) {
+
+        final Pair<View, String>[] pairs = createSafeTransitionParticipants(from, true, getPairs(sharedElements));
+        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(from, pairs);
+        intent.putExtra(TRANSITION_ID, transition);
+        from.startActivityForResult(intent, requestCode, transitionActivityOptions.toBundle());
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressWarnings("unchecked")
     private static Pair[] getPairs(View[] sharedElements) {
