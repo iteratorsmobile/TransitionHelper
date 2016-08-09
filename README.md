@@ -18,4 +18,4 @@ dependencies {
 	
 ## License
 
-Iterators Mobile, 2016. Licensed under an [Apache-2](LICENSE.txt) license.
+[Iterators Mobile](http://mobile.iterato.rs), 2016. Licensed under an [Apache-2](LICENSE.txt) license.
