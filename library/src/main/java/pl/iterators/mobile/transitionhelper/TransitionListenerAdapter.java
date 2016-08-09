@@ -1,4 +1,4 @@
-package pl.mobile.iterators.transitionhelper;
+package pl.iterators.mobile.transitionhelper;
 
 import android.annotation.TargetApi;
 import android.os.Build;

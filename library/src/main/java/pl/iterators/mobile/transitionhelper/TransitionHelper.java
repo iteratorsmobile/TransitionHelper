@@ -1,4 +1,4 @@
-package pl.mobile.iterators.transitionhelper;
+package pl.iterators.mobile.transitionhelper;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -65,7 +65,6 @@ public class TransitionHelper {
 
     @SuppressWarnings("unchecked")
     public static void transitionTo(AppCompatActivity from, Intent intent, @TransitionRes int transition, View... sharedElements) {
-
         final Pair<View, String>[] pairs = createSafeTransitionParticipants(from, true, getPairs(sharedElements));
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(from, pairs);
         intent.putExtra(TRANSITION_ID, transition);
@@ -74,7 +73,6 @@ public class TransitionHelper {
 
     @SuppressWarnings("unchecked")
     public static void transitionToForResult(AppCompatActivity from, Intent intent, int requestCode, @TransitionRes int transition, View... sharedElements) {
-
         final Pair<View, String>[] pairs = createSafeTransitionParticipants(from, true, getPairs(sharedElements));
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(from, pairs);
         intent.putExtra(TRANSITION_ID, transition);
