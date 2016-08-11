@@ -48,3 +48,4 @@ library/libs/
 library/src/androidTest/
 library/src/main/res/drawable/
 library/src/test/
+/.idea/

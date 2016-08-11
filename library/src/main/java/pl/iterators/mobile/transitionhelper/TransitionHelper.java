@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.TransitionRes;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -72,9 +73,25 @@ public class TransitionHelper {
     }
 
     @SuppressWarnings("unchecked")
+    public static void transitionTo(Fragment from, Intent intent, @TransitionRes int transition, View... sharedElements) {
+        final Pair<View, String>[] pairs = createSafeTransitionParticipants(from.getActivity(), true, getPairs(sharedElements));
+        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(from.getActivity(), pairs);
+        intent.putExtra(TRANSITION_ID, transition);
+        from.startActivity(intent, transitionActivityOptions.toBundle());
+    }
+
+    @SuppressWarnings("unchecked")
     public static void transitionToForResult(AppCompatActivity from, Intent intent, int requestCode, @TransitionRes int transition, View... sharedElements) {
         final Pair<View, String>[] pairs = createSafeTransitionParticipants(from, true, getPairs(sharedElements));
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(from, pairs);
+        intent.putExtra(TRANSITION_ID, transition);
+        from.startActivityForResult(intent, requestCode, transitionActivityOptions.toBundle());
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void transitionToForResult(Fragment from, Intent intent, int requestCode, @TransitionRes int transition, View... sharedElements) {
+        final Pair<View, String>[] pairs = createSafeTransitionParticipants(from.getActivity(), true, getPairs(sharedElements));
+        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(from.getActivity(), pairs);
         intent.putExtra(TRANSITION_ID, transition);
         from.startActivityForResult(intent, requestCode, transitionActivityOptions.toBundle());
     }
